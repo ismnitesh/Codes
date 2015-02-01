@@ -1,0 +1,61 @@
+#include<stdio.h>
+int main()
+{
+	int n,ans,i,a[500005],l[500005],x,y,cnt;
+	long long int s,sum;
+	scanf("%d",&n);
+	s=0;
+	for(i=0;i<n;i++)
+	{
+		scanf("%d",&a[i]);
+		s=s+a[i];
+	}
+	sum=0;
+	if(s%3==0)
+	{
+		s=s/3;
+		for(i=0;i<n;i++)
+		{
+			if(sum==s)
+			{
+				x=i;
+				break;
+			}
+			sum=sum+a[i];
+		}
+		sum=0;
+		for(i=n-1;i>=0;i--)
+		{
+			if(sum==s)
+			{
+				y=i;
+				break;
+			}
+			sum=sum+a[i];
+		}
+		sum=0;
+		cnt=0;
+		for(i=0;i<n;i++)
+		{
+			sum=sum+a[i];
+			if(sum==(2*s))
+				cnt++;
+			l[i]=cnt;
+		}
+		sum=0;
+		ans=0;
+		for(i=n;i>=x;i--)
+		{
+			sum=sum+a[i];
+			if(sum==s)
+				ans=ans+l[i-1];
+		}
+		for(i=0;i<n;i++)
+			printf("%d ",l[i]);
+		printf("\n");
+		printf("%d\n",ans);
+	}
+	else
+		printf("0\n");
+	return 0;
+}
