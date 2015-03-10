@@ -1,3 +1,3 @@
 # Codes
 
-This is my solution to quedtion on spoj,codechef,etc.
+This is my solution to question on spoj,codechef,etc.
