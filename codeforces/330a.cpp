@@ -2,56 +2,31 @@
 using namespace std;
 int main()
 {
-	int r,c,f[10][10],row[10],col[10],i,j,cnt=0;
-	char a[10][10];
+	int i,j,r,c,row[12],col[12];
+	char a[12][12];
 	cin >> r >> c;
 	for(i=0;i<r;i++)
+		cin >> a[i];
+	memset(row,0,sizeof(int)*r);
+	memset(col,0,sizeof(int)*c);
+	for (i=0;i<r;i++)
 	{
-		getchar();
-		for(j=0;j<c;j++)
+		for (j=0;j<c;j++)
 		{
-			row[i]=0;
-			col[j]=0;
-			scanf(" %c",&a[i][j]);
-			f[i][j]=0;
 			if(a[i][j]=='S')
 			{
 				row[i]=1;
 				col[j]=1;
-			}
+			}	
 		}
 	}
+	int cnt_r=0,cnt_c=0;
 	for(i=0;i<r;i++)
-	{
-		if(row[i]==0)
-		{
-			cnt+=c;
-			for(j=0;j<c;j++)
-				f[i][j]=1;
-		}
-	}
+		if(row[i]==1)
+			cnt_r++;
 	for(i=0;i<c;i++)
-	{
-		if(col[i]==0)
-		{
-			for(j=0;j<r;j++)
-			{
-				if(f[j][i]==0)
-					cnt++;
-			}
-		}
-	}
-	for(i=0;i<c;i++)
-		cout << col[i];
-	cout << endl;
-	for(i=0;i<r;i++)
-	{
-		for(j=0;j<c;j++)
-		{
-			cout << f[i][j];
-		}
-		cout << endl;
-	}
-	cout << cnt;
+		if(col[i]==1)
+			cnt_c++;
+	cout << (r*c)-(cnt_r*cnt_c);
 	return 0;
 }

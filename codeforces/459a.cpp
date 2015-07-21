@@ -2,15 +2,23 @@
 using namespace std;
 int main()
 {
-	int a,b,c,d;
+	int a,b,c,d,x3,y3;
 	cin >> a >> b >> c >> d;
 	if(a==c)
-		cout<<a<<" "<<b+abs(a-c)<<" "<<b<<" "<<d+abs(a-b);
+	{	
+		x3=a+abs(b-d);
+		cout << x3 << " " << b << " " << x3 << " " << d; 
+	}
 	else if(b==d)
-		cout<<a+abs(b-d)<<" "<<b<<" "<<c+abs(b-d)<<" "<<d;
-	else if(a!=c && b!=d && abs(a-c)==abs(b-d))
-		cout<<a<<" "<<d<<" "<<c<<" "<<b;
+	{
+		y3=b+abs(a-c);
+		cout << a << " " << y3 << " " << c << " " << y3;
+	}
+	else if(abs(a-c)==abs(b-d))
+	{
+		cout << a << " " << d << " " << c << " " << b; 
+	}
 	else
-		cout<<"-1";
+		cout << "-1";
 	return 0;
 }

@@ -2,33 +2,18 @@
 using namespace std;
 int main()
 {
-	int n,a[6005],ans=0,num,i,j;
+	int n,a[100004],ans=0,num,i,j;
 	cin >> n;
 	memset(a,0,sizeof(a));
 	for(i=0;i<n;i++)
+		cin >> a[i];
+	sort(a,a+n);
+	for(i=1;i<n;i++)
 	{
-		cin >> num;
-		a[num]++;
-	}
-	for(i=0;i<n;i++)
-	{
-		if(a[i]>1)
+		if(a[i]<=a[i-1])
 		{
-			int k=i+1;
-			while(a[i]>1)
-			{
-				for(j=k;;j++)
-				{
-					if(a[j]==0)
-					{
-						a[j]=1;
-						break;
-					}
-				}
-				k=j;
-				a[i]--;
-				ans+=j-i;
-			}
+			ans+=a[i-1]-a[i]+1;
+			a[i]=a[i-1]+1;
 		}
 	}
 	cout << ans;
